@@ -1,0 +1,5 @@
+/usr/share/vim/vim82/colors/
+
+and don't forget edit your .vimrc with:
+
+colorscheme test_colorsbox-stbright

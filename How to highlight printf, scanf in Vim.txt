@@ -1,0 +1,22 @@
+https://stackoverflow.com/questions/41205416/how-to-highlight-printf-scanf-in-vim
+
+Create ~/.vim/after/syntax/c.vim file (as recommended in the official
+documentation) with the following content:
+
+If it not exist, create it!
+
+
+syn keyword cFunctions printf scanf
+hi link cFunctions Function
+hi Function term=standout cterm=bold ctermfg=175  gui=bold guifg=#c397d8
+
+As far as I can see, the default syntax rules do not highlight the    
+functions, even from the standard library. So you need to add them
+yourself.
+
+The «syn» command adds «printf» and «scanf» to the «cFunctions»
+highlighting group.
+
+The «hi» command links «cFunctions» group to the «Function» highlight
+group, which is usually defined by the colorscheme. If the «Function»
+group is not defined, you can define it yourself, e.g.
