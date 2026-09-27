@@ -1,6 +1,10 @@
 "set_section
 "-------------------
 "augroup_section
+"   filetype_c_cpp
+"   filetype_pascal
+"   filetype_makefile
+"   filetype_asm
 "-------------------
 "autocmd_section
 "-------------------
@@ -254,6 +258,15 @@ augroup filetype_c_cpp
     au BufReadPre *.c,*.cpp,*.h inoremap enumk enum {  };<Esc>hhi
     au BufReadPre *.c,*.cpp,*.h vnoremap cc <Esc>o#endif<Esc>gvo<Esc>O#if 0<Esc>
     au BufReadPre *.c,*.cpp,*.h vnoremap uc <Esc>ddgvo<Esc>dd<Esc>
+
+    "put directive (#if 0) here
+    au BufReadPre *.c,*.cpp,*.h inoremap <buffer> pdh <Esc>G%ddggpko
+        \<CR><CR><Esc>ki
+    au BufReadPre *.c,*.cpp,*.h inoremap <buffer> exork <Bar>
+    au BufReadPre *.c,*.cpp,*.h inoremap <buffer> exandk &
+    "<Bar> is a | character
+    au BufReadPre *.c,*.cpp,*.h inoremap <buffer> ork <Bar><Bar>
+    au BufReadPre *.c,*.cpp,*.h inoremap <buffer> andk &&
 augroup END
 
 augroup filetype_pascal
@@ -292,7 +305,11 @@ augroup END
 augroup filetype_asm
     autocmd!
     au BufReadPre *.asm,*.s,*.inc setlocal noexpandtab
-    au BufReadPre *.asm,*.inc inoremap <buffer> pdh <Esc>/%if<Space><CR>dd<C-o>p
+    au BufReadPre *.asm,*.inc inoremap <buffer> pdh 
+        \<Esc>/%if<Space><CR>dd<C-o>pko<CR><CR><Esc>ki
+    au BufReadPre *.asm,*.inc inoremap <buffer> textk section<Tab>.text<Esc>
+    au BufReadPre *.asm,*.inc inoremap <buffer> datak section<Tab>.data<Esc>
+    au BufReadPre *.asm,*.inc inoremap <buffer> bssk section<Tab>.bss<Esc>
 augroup END
 
 "autocmd BufLeave * :w
