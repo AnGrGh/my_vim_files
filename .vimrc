@@ -310,6 +310,11 @@ augroup filetype_asm
     au BufReadPre *.asm,*.inc inoremap <buffer> textk section<Tab>.text<Esc>
     au BufReadPre *.asm,*.inc inoremap <buffer> datak section<Tab>.data<Esc>
     au BufReadPre *.asm,*.inc inoremap <buffer> bssk section<Tab>.bss<Esc>
+    au BufReadPre *.s inoremap <buffer> cmk /*  */<Esc>hhi
+    au BufReadPre *.s inoremap <buffer> datak .section<Tab>.data
+    au BufReadPre *.s inoremap <buffer> textk .section<Tab>.text
+    au BufReadPre *.s inoremap <buffer> rodatak .section<Tab>.rodata
+    au BufReadPre *.s inoremap <buffer> bssk .section<Tab>.bss
 augroup END
 
 "autocmd BufLeave * :w
