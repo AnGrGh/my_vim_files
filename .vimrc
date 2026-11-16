@@ -398,6 +398,12 @@ inoremap esk =<Space>
 "Get cursor up
 inoremap gcuk <Esc>O
 
+"Delete one character (Backspace)
+inoremap gck <bs>
+
+"Delete one word
+inoremap gwk <C-w>
+
 "===============================================================
 "noremap_section
 
